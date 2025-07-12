@@ -22,6 +22,7 @@ const AirFryerForm: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [submitted, setSubmitted] = useState(false);
 
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
@@ -141,6 +142,7 @@ const AirFryerForm: React.FC = () => {
 
     if (validateForm()) {
       console.log("Form submitted with data:", formData);
+      setSubmitted(true);
     }
   };
 
@@ -150,137 +152,145 @@ const AirFryerForm: React.FC = () => {
         <NetworkBg />
       </div>
       <div className="air-fryer-form-container">
-        <div className="form-header">
-          <h2>Get Your Spidr Air Fryer</h2>
-          <p>Join the revolution in air frying technology</p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="air-fryer-form">
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="firstName">First Name *</label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-                className={errors.firstName ? "error" : ""}
-                placeholder="first name"
-              />
-              {errors.firstName && (
-                <span className="error-message">{errors.firstName}</span>
-              )}
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="lastName">Last Name *</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleInputChange}
-                className={errors.lastName ? "error" : ""}
-                placeholder="last name"
-              />
-              {errors.lastName && (
-                <span className="error-message">{errors.lastName}</span>
-              )}
-            </div>
+        {submitted ? (
+          <div className="form-submitted-message">
+            The form has been submitted.{" "}
           </div>
-
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="phoneNumber">Phone Number *</label>
-              <input
-                type="number"
-                id="phoneNumber"
-                name="phoneNumber"
-                value={formData.phoneNumber}
-                onChange={handleInputChange}
-                onKeyDown={(e) => {
-                  if (["e", "E", "+", "-"].includes(e.key)) {
-                    e.preventDefault();
-                  }
-                }}
-                className={errors.phoneNumber ? "error" : ""}
-                placeholder="phone number"
-                inputMode="numeric"
-                pattern="[0-9]*"
-                minLength={10}
-                maxLength={15}
-              />
-              {errors.phoneNumber && (
-                <span className="error-message">{errors.phoneNumber}</span>
-              )}
+        ) : (
+          <>
+            <div className="form-header">
+              <h2>Get Your Spidr Air Fryer</h2>
+              <p>Join the revolution in air frying technology</p>
             </div>
 
-            <div className="form-group">
-              <label htmlFor="email">Email Address *</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className={errors.email ? "error" : ""}
-                placeholder="email address"
-              />
-              {errors.email && (
-                <span className="error-message">{errors.email}</span>
-              )}
-            </div>
-          </div>
+            <form onSubmit={handleSubmit} className="air-fryer-form">
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="firstName">First Name *</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    className={errors.firstName ? "error" : ""}
+                    placeholder="first name"
+                  />
+                  {errors.firstName && (
+                    <span className="error-message">{errors.firstName}</span>
+                  )}
+                </div>
 
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="costGuess">Guess the Air Fryer's $ *</label>
-              <input
-                type="number"
-                id="costGuess"
-                name="costGuess"
-                value={formData.costGuess}
-                onChange={handleInputChange}
-                onKeyDown={(e) => {
-                  if (["e", "E", "+", "-"].includes(e.key)) {
-                    e.preventDefault();
-                  }
-                }}
-                className={errors.costGuess ? "error" : ""}
-                placeholder="$299.99"
-                min="0"
-                step="0.01"
-              />
-              {errors.costGuess && (
-                <span className="error-message">{errors.costGuess}</span>
-              )}
-            </div>
+                <div className="form-group">
+                  <label htmlFor="lastName">Last Name *</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    className={errors.lastName ? "error" : ""}
+                    placeholder="last name"
+                  />
+                  {errors.lastName && (
+                    <span className="error-message">{errors.lastName}</span>
+                  )}
+                </div>
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="spidrPin">Spidr PIN *</label>
-              <input
-                type="text"
-                id="spidrPin"
-                name="spidrPin"
-                value={formData.spidrPin}
-                onChange={handleSpidrPinChange}
-                className={errors.spidrPin ? "error" : ""}
-                placeholder="1234-5678-9012-3456"
-                maxLength={19}
-              />
-              {errors.spidrPin && (
-                <span className="error-message">{errors.spidrPin}</span>
-              )}
-            </div>
-          </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="phoneNumber">Phone Number *</label>
+                  <input
+                    type="number"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleInputChange}
+                    onKeyDown={(e) => {
+                      if (["e", "E", "+", "-"].includes(e.key)) {
+                        e.preventDefault();
+                      }
+                    }}
+                    className={errors.phoneNumber ? "error" : ""}
+                    placeholder="phone number"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    minLength={10}
+                    maxLength={15}
+                  />
+                  {errors.phoneNumber && (
+                    <span className="error-message">{errors.phoneNumber}</span>
+                  )}
+                </div>
 
-          <div className="form-submit">
-            <button type="submit" className="submit-button">
-              Submit
-            </button>
-          </div>
-        </form>
+                <div className="form-group">
+                  <label htmlFor="email">Email Address *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className={errors.email ? "error" : ""}
+                    placeholder="email address"
+                  />
+                  {errors.email && (
+                    <span className="error-message">{errors.email}</span>
+                  )}
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="costGuess">Guess the Air Fryer's $ *</label>
+                  <input
+                    type="number"
+                    id="costGuess"
+                    name="costGuess"
+                    value={formData.costGuess}
+                    onChange={handleInputChange}
+                    onKeyDown={(e) => {
+                      if (["e", "E", "+", "-"].includes(e.key)) {
+                        e.preventDefault();
+                      }
+                    }}
+                    className={errors.costGuess ? "error" : ""}
+                    placeholder="$299.99"
+                    min="0"
+                    step="0.01"
+                  />
+                  {errors.costGuess && (
+                    <span className="error-message">{errors.costGuess}</span>
+                  )}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="spidrPin">Spidr PIN *</label>
+                  <input
+                    type="text"
+                    id="spidrPin"
+                    name="spidrPin"
+                    value={formData.spidrPin}
+                    onChange={handleSpidrPinChange}
+                    className={errors.spidrPin ? "error" : ""}
+                    placeholder="1234-5678-9012-3456"
+                    maxLength={19}
+                  />
+                  {errors.spidrPin && (
+                    <span className="error-message">{errors.spidrPin}</span>
+                  )}
+                </div>
+              </div>
+
+              <div className="form-submit">
+                <button type="submit" className="submit-button">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </>
+        )}
       </div>
     </>
   );

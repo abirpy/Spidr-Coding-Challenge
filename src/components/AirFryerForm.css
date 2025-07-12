@@ -263,3 +263,16 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 } 
+
+.form-submitted-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10px;
+  font-size: 1.5rem;
+  color: #fff;
+  text-align: center;
+  font-family: 'Raleway', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+} 
