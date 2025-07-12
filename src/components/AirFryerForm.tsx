@@ -141,7 +141,6 @@ const AirFryerForm: React.FC = () => {
 
     if (validateForm()) {
       console.log("Form submitted with data:", formData);
-      alert("Thank you for your interest! Check the console for form data.");
     }
   };
 
