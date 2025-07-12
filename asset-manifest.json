@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Spidr-Coding-Challenge/static/css/main.59ffd0ce.css",
-    "main.js": "/Spidr-Coding-Challenge/static/js/main.927a929a.js",
+    "main.css": "/Spidr-Coding-Challenge/static/css/main.54ce9b3f.css",
+    "main.js": "/Spidr-Coding-Challenge/static/js/main.573c958c.js",
     "static/js/453.76577ad4.chunk.js": "/Spidr-Coding-Challenge/static/js/453.76577ad4.chunk.js",
     "index.html": "/Spidr-Coding-Challenge/index.html",
-    "main.59ffd0ce.css.map": "/Spidr-Coding-Challenge/static/css/main.59ffd0ce.css.map",
-    "main.927a929a.js.map": "/Spidr-Coding-Challenge/static/js/main.927a929a.js.map",
+    "main.54ce9b3f.css.map": "/Spidr-Coding-Challenge/static/css/main.54ce9b3f.css.map",
+    "main.573c958c.js.map": "/Spidr-Coding-Challenge/static/js/main.573c958c.js.map",
     "453.76577ad4.chunk.js.map": "/Spidr-Coding-Challenge/static/js/453.76577ad4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.59ffd0ce.css",
-    "static/js/main.927a929a.js"
+    "static/css/main.54ce9b3f.css",
+    "static/js/main.573c958c.js"
   ]
 }
